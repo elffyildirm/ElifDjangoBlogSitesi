@@ -121,7 +121,8 @@
                         <th class="text-left">Galery </th>
                         <th class="text-left">Status </th>
                         <th class="text-left">Date </th>
-                        <th class="text-left">Detail </th>
+                        <th class="text-left">Edit </th>
+                        <th class="text-left">Delete </th>
                     </tr>
                     {% for rs in contents %}
                     <tr>
@@ -134,7 +135,7 @@
                         <td class="text-left">{{ rs.type}} </td>
                         <th class="text-left"><a href="javascript:;" onclick="window.open('/user/contenaddimage/{{ rs.id }}', 'gallery', 'height=600, width=800, top=50, left=150')">Gallery</a></th>
                         <td class="text-left">{{ rs.status}} </td>
-                        <td class="text-left">{{ rs.create_at}} </td>
+                        <td class="text-left">{{ rs.creat_at}} </td>
                         <td class="text-left"><a class="primary-btn" href="/user/contentedit/{{ rs.id }}"> Edit </a>
                         </td>
                         <td class="text-left"><a class="primary-btn" href="/user/contentdelete/{{ rs.id }}"

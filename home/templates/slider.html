@@ -42,8 +42,10 @@
             {% for rs in news %}
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                 <div class="featured__item">
+                    <a href="/blog/{{ rs.id }}/{{ rs.slug }}">
                     <div class="featured__item__pic set-bg" data-setbg="{{ rs.image.url }}">
                     </div>
+                    </a>
                     <div class="featured__item__text">
                         <h6><a href="/blog/{{ rs.id }}/{{ rs.slug }}">
                                 <h5>{{ rs.title }}</h5>
@@ -73,11 +75,13 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="blog__item">
                     <div class="blog__item__pic">
+                        <a href="/blog/{{ rs.id }}/{{ rs.slug }}">
                         <img src="{{ rs.image.url }}" alt="Trulli" width="500" height="200">
+                        </a>
                     </div>
                     <div class="blog__item__text">
                         <ul>
-                            <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                            <li><i class="fa fa-calendar-o"></i>{{ rs.creat_at }}</li>
                             <li><i class="fa fa-comment-o"></i> 5</li>
                         </ul>
                         <h5><a href="/blog/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h5>

@@ -5,6 +5,20 @@
 {% block sidebar %}
 {% load mptt_tags %}
 {% load static %}
+
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
 <!-- Hero Section Begin -->
 <section class="hero hero-normal">
     <div class="container">
@@ -111,7 +125,42 @@
             <div class="col-lg-9">
                 <div class="section-title">
                     <h4><b>İLETİŞİM BİLGİLERİ</b></h4>
-                    {% include  "table.html" %}
+
+  <table>
+    <tr>
+      <th class="text-left"></th>
+      <td><img src="{{ profile.image.url }}" width="80" height="80"> </td>
+    </tr>
+    <tr>
+      <th class="text-left">Name Surname</th>
+      <td class="text-left">{{ profile.user_name }}</td>
+    </tr>
+    <tr>
+      <th class="text-left">Email</th>
+      <td class="text-left">{{ profile.user.email }}</td>
+    </tr>
+    <tr>
+      <th class="text-left">Phone</th>
+      <td class="text-left">{{ profile.phone }}</td>
+    </tr>
+    <tr>
+      <th class="text-left">Addres</th>
+      <td class="text-left">{{ profile.address }}</td>
+    </tr>
+    <tr>
+      <th class="text-left">City</th>
+      <td class="text-left">{{ profile.city }}</td>
+    </tr>
+    <tr>
+      <th class="text-left">Country</th>
+      <td class="text-left">{{ profile.country }}</td>
+    </tr>
+    <tr>
+      <th class="text-center"><a href="/user/update" class="primary-btn">Update Prfile</a></th>
+      <th class="text-center"><a href="/user/password" class="primary-btn">Change Password</a></th>
+    </tr>
+
+  </table>
                 </div>
                 {{ setting.contact | safe }}
             </div>

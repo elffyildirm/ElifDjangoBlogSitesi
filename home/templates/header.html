@@ -23,7 +23,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/blog.ac.bedava"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-linkedin"></i></a>
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
@@ -82,24 +82,7 @@
                     <ul>
                         <li class="active"><a href="/">Anasayfa</a></li>
                         <li><a href="/hakkimizda">Hakkımızda</a></li>
-                        <li><a href="#">Blog</a>
-                            <ul class="header__menu__dropdown">
-                                {% recursetree category %}
-                                <li><a href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}</a>
-                                    {% if not node.is_leaf_node %}
-                                    <ul style="top:0;left:170px;" class="header__menu__dropdown">
-                                        <li> {{ children }}</li>
-                                        <style>
-                                            .header__menu ul li .header__menu__dropdown li:hover>a {
-                                                color: lightgreen;
-                                            }
-                                        </style>
-                                    </ul>
-                                    {% endif %}
-                                </li>
-                                {% endrecursetree %}
-                            </ul>
-                        </li>
+                        <li><a href="/sss">SSS</a></li>
                         <li><a href="/referanslar">Referanslar</a></li>
                         <li><a href="/iletisim">İLETİŞİM</a></li>
                     </ul>
