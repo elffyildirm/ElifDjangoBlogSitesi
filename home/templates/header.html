@@ -1,0 +1,110 @@
+{% load static %}
+{% load mptt_tags %}
+{% block head %}
+<style>
+    a:hover {
+        color: #640000;
+    }
+</style>
+{% endblock %}
+
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__left">
+                        <ul>
+                            <li><i class="fa fa-envelope"></i> blog@gmail.com</li>
+                            <li>Blog Sitemize Hos Geldiniz..</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        <div class="header__top__right__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                        <div class="header__top__right__language">
+                            <img src="{% static 'img/turkey.png' %}" alt="">
+                            <div>Türkçe</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a href=""
+                                        onclick="return confirm('Sitenin Ingilizce versiyonu bulunmamamktadir.')">English</a>
+                                </li>
+                                <li><a href="">Türkçe</a></li>
+                            </ul>
+                        </div>
+                        <div class="header__top__right__auth">
+                            {% if user.id is not None %}
+                            <div>
+                                <strong><img src="{{ request.user.profile.image.url }}"> {{ user.username }} </strong>
+                            </div>
+                            <div class="header__top__right__language">
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="/user/">My Account</a></li>
+                                    <li><a href="/user/comments">Comments</a></li>
+                                    <li><a href="/user/contents">Contents</a></li>
+                                    <li><a href="/logout/">LogOut</a></li>
+                                </ul>
+                            </div>
+                            {% else %}
+                            <div>
+                                <nav class="header__menu" align="center">
+                                    <ul>
+                                        <li><a href="/login/"><i class="fa fa-user"></i> Login</a>
+                                        <li><a href="/signup/"><i class="fa fa-user"></i> Sign Up</a></li>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="humberger__menu__logo" align="center">
+                    <a href="/"> <img style="padding:10px;" src="{% static 'img/60736.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <nav class="header__menu" align="center">
+                    <ul>
+                        <li class="active"><a href="/">Anasayfa</a></li>
+                        <li><a href="/hakkimizda">Hakkımızda</a></li>
+                        <li><a href="#">Blog</a>
+                            <ul class="header__menu__dropdown">
+                                {% recursetree category %}
+                                <li><a href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}</a>
+                                    {% if not node.is_leaf_node %}
+                                    <ul style="top:0;left:170px;" class="header__menu__dropdown">
+                                        <li> {{ children }}</li>
+                                        <style>
+                                            .header__menu ul li .header__menu__dropdown li:hover>a {
+                                                color: lightgreen;
+                                            }
+                                        </style>
+                                    </ul>
+                                    {% endif %}
+                                </li>
+                                {% endrecursetree %}
+                            </ul>
+                        </li>
+                        <li><a href="/referanslar">Referanslar</a></li>
+                        <li><a href="/iletisim">İLETİŞİM</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
